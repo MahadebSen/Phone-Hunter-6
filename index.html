@@ -18,6 +18,9 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+        ul{
+            list-style: none;
+        }
     </style>
     <title>Document</title>
 </head>
@@ -25,6 +28,7 @@
     <header>
         <h2 class="bg-primary text-light bg-opacity-75 text-center m-3 p-2 fs-1 rounded-pill">It's Your <span class="fw-bolder text-black">mobile</span></h2>
     </header>
+
     <section>
         <div class="input-group my-4 mx-auto w-50">
             <input id="search-input" type="text" class="form-control" placeholder="Search products, brands and more" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -32,14 +36,38 @@
         </div>
     </section>
 
-    <section>
-
+    <section id="product-details">
+        <div class="card text-center m-5">
+            <div class="card-header">
+              Featured
+            </div>
+            <img src="action.png" class="card-img-top w-50 mx-auto p-3" alt="">
+            <div class="card-body">
+              <h4 class="card-title"> Iphone 13 mini</h4>
+              <h5 class="card-title">Brand: </h5>
+              <p class="card-text">Release Date: </p>
+              <p class="card-text">Main Features: 
+                  <ul>
+                      <li><span>Chipset: </span></li>
+                      <li><span>Display Size: </span></li>
+                      <li><span>Memory:</span></li>
+                      <li><span>Memory:</span></li>
+                  </ul>
+              </p>
+              <p class="card-text">sensors: </p>
+              <p class="card-text">others: </p>
+              
+            </div>
+            <div class="card-footer text-muted">
+              Info about Iphone 13 mini
+            </div>
+          </div>
     </section>
 
     <section class="container">
-        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 my-3">
             
-
+            
         </div>
     </section>
 
