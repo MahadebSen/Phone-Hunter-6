@@ -62,7 +62,16 @@ const details = features =>{
                 <li><span class="fw-bold">Storage: </span>${features.mainFeatures.storage}</li>
             </ul>
         </p>
-        <p class="card-text"><span class="fw-bold">others: </span></p>
+        <p class="card-text"><span class="fw-bold">others: </span>
+            <ul>
+                <li><span class="fw-bold">Bluetooth:  </span>${features.others.Bluetooth}</li>
+                <li><span class="fw-bold">GPS:  </span>${features.others.GPS}</li>
+                <li><span class="fw-bold">NFC:  </span>${features.others.NFC}</li>
+                <li><span class="fw-bold">Radio:  </span>${features.others.Radio}</li>
+                <li><span class="fw-bold">USB: </span>${features.others.USB}</li>
+                <li><span class="fw-bold">WLAN: </span>${features.others.WLAN}</li>
+            </ul>
+        </p>
     </div>
     <div class="card-footer text-muted">
         Info about ${features.name}
