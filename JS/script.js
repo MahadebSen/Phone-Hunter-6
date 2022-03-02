@@ -1,15 +1,16 @@
-
+// spinner add
 const displaySpinner = (displayType) => {
     document.getElementById('toggle-spinner').style.display = displayType;
 };
 
-
+// search button event
 document.getElementById("search-btn").addEventListener('click', function(){
     document.getElementById('product-details').innerHTML = '';
     displaySpinner('block');
    dataFetch();
 });
 
+// search button data fetch
 const dataFetch = () =>{
     const searchInput = document.getElementById('search-input');
     const storeSearchValue =  searchInput.value.toLowerCase();
@@ -29,6 +30,7 @@ const dataFetch = () =>{
     };
 };
 
+// search result 
 const searchResult = searchData => {
     const searchResult = document.getElementById('search-result');
     document.getElementById('product-show-more').innerHTML = '';
@@ -69,6 +71,7 @@ const searchResult = searchData => {
     
 };
 
+// item details data fetch
 const detailsCall = id =>{
     // console.log(id)
     const url2 = `https://openapi.programming-hero.com/api/phone/${id}`
@@ -76,8 +79,10 @@ const detailsCall = id =>{
     .then(res => res.json())
     .then(data => details(data.data));
 
-}
+};
 
+
+// details data display
 const details = features =>{
     const productDetails = document.getElementById('product-details');
     productDetails.innerHTML = '';
@@ -120,6 +125,7 @@ const details = features =>{
     productDetails.appendChild(div2);
 };
 
+// relese date function
 const releaseDate = date =>{
     if (date === ""){
         const releaseDateData = 'No release date found';
