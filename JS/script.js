@@ -1,32 +1,49 @@
 
+const displaySpinner = (displayType) => {
+    document.getElementById('toggle-spinner').style.display = displayType;
+};
+
+
 document.getElementById("search-btn").addEventListener('click', function(){
+    document.getElementById('product-details').innerHTML = '';
+    displaySpinner('block');
+   dataFetch();
+});
+
+const dataFetch = () =>{
     const searchInput = document.getElementById('search-input');
-    
+    const storeSearchValue =  searchInput.value.toLowerCase();
     if (searchInput.value === ''){
         document.getElementById('product-details').innerHTML =  `
         <p class="text-center my-auto">Please write somthing in search field</p>`;
         document.getElementById('search-result').innerHTML = '';
     }
     else{
-        document.getElementById('product-details').innerHTML = '';
-        const url = `https://openapi.programming-hero.com/api/phones?search=${searchInput.value}`
+       
+        const url = `https://openapi.programming-hero.com/api/phones?search=${storeSearchValue}`
+        console.log(url);
         fetch(url)
         .then(res => res.json())
         .then(data => searchResult(data))
         searchInput.value = '';
-    }
-});
+    };
+};
 
 const searchResult = searchData => {
     const searchResult = document.getElementById('search-result');
+    document.getElementById('product-show-more').innerHTML = '';
     searchResult.innerHTML = '';
     if (searchData.status === false){
         document.getElementById('product-details').innerHTML =  `
         <p class="text-center mt-5 pt-5 fw-bold">No search result found</p>`;
     }
     else{
-        
-        for (const product of searchData.data){
+        const resultArray = searchData.data;
+        const sliceIt = resultArray.slice(0,20);
+        console.log(sliceIt)
+
+        for (const product of sliceIt){
+            
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -40,11 +57,20 @@ const searchResult = searchData => {
             </div>`;
             searchResult.appendChild(div);
         };
-    }
+        if (sliceIt.length >= 20){
+            const showMoreDiv = document.createElement('div')
+            showMoreDiv.innerHTML = `
+            <button onclick="" type="button" class="btn btn-outline-primary mb-3">Show more</button>`;
+            document.getElementById('product-show-more').appendChild(showMoreDiv);
+            
+        };
+    };
+    displaySpinner('none');
+    
 };
 
 const detailsCall = id =>{
-    console.log(id)
+    // console.log(id)
     const url2 = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url2)
     .then(res => res.json())
@@ -95,7 +121,7 @@ const details = features =>{
 };
 
 const releaseDate = date =>{
-    if (date == ""){
+    if (date === ""){
         const releaseDateData = 'No release date found';
         return releaseDateData;
     }
@@ -107,6 +133,3 @@ const releaseDate = date =>{
 
 
 
-
-{/* <p class="card-text"><span class="fw-bold">Release Date: </span>${features.releaseDate}</p> */}
-// ${releaseDate(features.releaseDate)}
