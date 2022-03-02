@@ -5,7 +5,8 @@ const displaySpinner = (displayType) => {
 
 // search button event
 document.getElementById("search-btn").addEventListener('click', function(){
-    document.getElementById('product-details').innerHTML = '';
+    document.getElementById('product-details').textContent = '';
+    document.getElementById('product-show-more').textContent = '';
     displaySpinner('block');
    dataFetch();
 });
